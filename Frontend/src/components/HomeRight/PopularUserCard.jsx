@@ -48,7 +48,19 @@ function PopularUserCard({ item }) {
           )
         }
         title={item.firstName.toLowerCase() + "_" + item.lastName.toLowerCase()}
-        subheader={item.email}
+        subheader={
+          <span
+            style={{
+              display: "inline-block",
+              maxWidth: "150px", // Set the max-width to control the length
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {item.email}
+          </span>
+        }
       />
     </div>
   );

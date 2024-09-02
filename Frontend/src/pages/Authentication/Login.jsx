@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { Button, TextField } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { loginUserAction } from "../../Redux/Auth/authAction";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const initialValues = { email: "", password: "" };
 const validationSchema = {
@@ -118,6 +118,12 @@ function Login() {
         </Form>
       </Formik>
 
+      <Link
+        to="/forgot-password"
+        className="underline flex justify-center mt-2 text-blue-500"
+      >
+        Forgot Password ?
+      </Link>
       <div className="flex gap-2 items-center justify-center pt-5">
         <p>If you don't have account?</p>
         <Button onClick={() => navigate("/register")}>Register</Button>

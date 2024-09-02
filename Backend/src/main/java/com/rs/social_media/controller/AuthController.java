@@ -8,6 +8,8 @@ import com.rs.social_media.response.AuthResponse;
 import com.rs.social_media.service.CustomerUserDetailsService;
 import com.rs.social_media.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -71,6 +73,7 @@ public class AuthController {
 
         return res;
     }
+
 
 
     private Authentication authenticate(String email, String password) {

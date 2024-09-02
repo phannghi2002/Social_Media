@@ -3,7 +3,7 @@ import { Avatar } from "@mui/material";
 function StoryCircle({ item }) {
   return (
     <div>
-      <div className="flex flex-col items-center mr-4 cursor-pointer">
+      <div className="flex flex-col items-center mr-4 cursor-pointer ">
         <Avatar
           sx={{ width: "2.5rem", height: "2.5rem" }}
           src="https://th.bing.com/th/id/OIP.6Zu4MaXfS1aM1EdA31OweQAAAA?rs=1&pid=ImgDetMain"

@@ -18,11 +18,7 @@ export const navigationMenu = [
     icon: <ExploreIcon />,
     path: "/reels",
   },
-  {
-    title: "Create Reels",
-    icon: <ControlPointIcon />,
-    path: "/create-reels",
-  },
+
   {
     title: "Notifications",
     icon: <NotificationsIcon />,
@@ -33,16 +29,7 @@ export const navigationMenu = [
     icon: <MessageIcon />,
     path: "/message",
   },
-  {
-    title: "Lists",
-    icon: <ListAltIcon />,
-    path: "/",
-  },
-  {
-    title: "Communities",
-    icon: <GroupIcon />,
-    path: "/",
-  },
+
   {
     title: "Profile",
     icon: <AccountCircleIcon />,

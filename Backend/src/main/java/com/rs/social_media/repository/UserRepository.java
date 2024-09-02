@@ -1,14 +1,16 @@
 package com.rs.social_media.repository;
 
 import com.rs.social_media.model.User;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 
 import java.util.List;
 
-public interface UserRepository  extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<User, Integer> {
     //jpa tự động tạo phương thức dựa trên tên của phương thức, nếu muốn tìm kếm
     //dựa trên một thuộc tính nào đó thì ta bắt đầu bằng findBy sau đó là tên thuộc tính
     // được viết theo camel case (viết hoa chữ cái đầu) và nó phai trùng khớp với
@@ -19,4 +21,9 @@ public interface UserRepository  extends JpaRepository<User, Integer> {
 
     @Query("select u from User u where u.firstName LIKE %:query9% OR u.lastName LIKE %:query9% OR u.email LIKE %:query9%")
     public List<User> searchUser(@Param("query9") String query);
+
+    @Transactional
+    @Modifying
+    @Query("update User u set u.password = ?2 where u.email = ?1")
+    void updatePassword(String email, String password);
 }

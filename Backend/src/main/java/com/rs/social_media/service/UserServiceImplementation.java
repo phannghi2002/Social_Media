@@ -4,6 +4,7 @@ import com.rs.social_media.config.jwtProvider;
 import com.rs.social_media.exceptions.UserExceptions;
 import com.rs.social_media.model.User;
 import com.rs.social_media.repository.UserRepository;
+import com.rs.social_media.utils.CreateOTP;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +12,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServiceImplementation implements UserService{
+public class UserServiceImplementation implements UserService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    EmailSenderService emailSenderService;
 
     @Override
     public User registerUser(User user) {
@@ -33,10 +37,10 @@ public class UserServiceImplementation implements UserService{
     public User findUserById(Integer userId) throws UserExceptions {
 
         Optional<User> user = userRepository.findById(userId);
-        if(user.isPresent()){
+        if (user.isPresent()) {
             return user.get();
         }
-       throw new UserExceptions("User not exist with userId " + userId);
+        throw new UserExceptions("User not exist with userId " + userId);
 
 
     }
@@ -44,7 +48,7 @@ public class UserServiceImplementation implements UserService{
     @Override
     public User findUserByEmail(String email) {
         User user = userRepository.findByEmail(email);
-        return  user;
+        return user;
 
     }
 
@@ -58,8 +62,7 @@ public class UserServiceImplementation implements UserService{
         )) {
             user2.getFollowers().remove(reqUser.getId());
             reqUser.getFollowings().remove(user2.getId());
-        }
-        else {
+        } else {
             user2.getFollowers().add(reqUser.getId());
             reqUser.getFollowings().add(user2.getId());
         }
@@ -71,24 +74,24 @@ public class UserServiceImplementation implements UserService{
     }
 
     @Override
-    public User updateUser(User user, Integer userId) throws UserExceptions{
+    public User updateUser(User user, Integer userId) throws UserExceptions {
         Optional<User> user1 = userRepository.findById(userId);
 
-        if(user1.isEmpty()){
+        if (user1.isEmpty()) {
             throw new UserExceptions("User not exist id " + userId);
         }
         User oldUser = user1.get();
 
-        if (user.getFirstName()!=null){
+        if (user.getFirstName() != null) {
             oldUser.setFirstName(user.getFirstName());
         }
-        if (user.getLastName()!=null){
+        if (user.getLastName() != null) {
             oldUser.setLastName(user.getLastName());
         }
-        if (user.getEmail()!=null){
+        if (user.getEmail() != null) {
             oldUser.setEmail(user.getEmail());
         }
-        if(user.getGender()!=null){
+        if (user.getGender() != null) {
             oldUser.setGender(user.getGender());
         }
 //        if(user.getPassword()!=null){
@@ -111,4 +114,20 @@ public class UserServiceImplementation implements UserService{
         User user = userRepository.findByEmail(email);
         return user;
     }
+
+
+
+
+
+//    @Override
+//    public String forgotPassword(String email) {
+//        User user = userRepository.findByEmail(email);
+//        if (user == null) {
+//            throw new RuntimeException("User not found with email: " + email);
+//        }
+//        emailSenderService.sendEmail(email,"Verify OTP",  otpGenerator.generateOTP());
+//        //emailSenderService.sendEmail("minh10a1quangtrung@gmail.com","hello" ,  "hhe");
+////        return otpGenerator.generateOTP();
+//        return "hihi";
+//    }
 }

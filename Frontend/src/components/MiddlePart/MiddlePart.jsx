@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllPostAction } from "../../Redux/Post/postAction";
 import { getAllUser } from "../../Redux/Auth/authAction";
 import { ToastContainer } from "react-toastify";
+import Slider from "react-slick";
 
 function MiddlePart() {
   const dispatch = useDispatch();
@@ -32,6 +33,23 @@ function MiddlePart() {
     dispatch(getAllPostAction());
   }, [post.newComment, post.deletePostStatus, post.like]);
 
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 2,
+  };
+
+  let renderStory = "";
+  if (story) {
+    renderStory = story.map((item, key) => (
+      <div key={key}>
+        <StoryCircle item={item} />
+      </div>
+    ));
+  }
+
   return (
     <div className="px-20">
       <section className="flex  py-5 items-center p-5 rounded-b-md">
@@ -42,12 +60,9 @@ function MiddlePart() {
           <p>New</p>
         </div>
 
-        {story &&
-          story.map((item, key) => (
-            <div key={key}>
-              <StoryCircle item={item} />
-            </div>
-          ))}
+        <Slider {...settings} className="w-[500px] mx-[30px]">
+          {renderStory}
+        </Slider>
       </section>
 
       <Card className="p-5 mt-5">

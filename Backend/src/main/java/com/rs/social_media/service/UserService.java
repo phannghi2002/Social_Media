@@ -19,4 +19,6 @@ public interface UserService {
     public List<User> searchUser(String query);
 
     public User findUserByJwt(String jwt);
+
+//    public String forgotPassword(String email);
 }

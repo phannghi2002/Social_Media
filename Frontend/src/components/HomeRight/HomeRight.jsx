@@ -5,6 +5,7 @@ import { Card } from "@mui/material";
 
 function HomeRight() {
   const { auth } = useSelector((store) => store);
+  console.log("auth ne ", auth.allUser);
 
   return (
     <div className="pr-5">

@@ -2,6 +2,8 @@ import { Card, Grid } from "@mui/material";
 import Login from "./Login";
 import Register from "./Register";
 import { Route, Routes } from "react-router-dom";
+import ForgotPassword from "./ForgotPassword";
+import { ToastContainer } from "react-toastify";
 
 function Authentication() {
   return (
@@ -28,11 +30,25 @@ function Authentication() {
                 <Route path="/" element={<Login />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/forgot-password" element={<ForgotPassword />} />
               </Routes>
             </Card>
           </div>
         </Grid>
       </Grid>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 }
