@@ -2,7 +2,7 @@ import { Card, Grid } from "@mui/material";
 import Login from "./Login";
 import Register from "./Register";
 import { Route, Routes } from "react-router-dom";
-import ForgotPassword from "./ForgotPassword";
+import ForgotPassword from "../ForgotPassword/ForgotPassword";
 import { ToastContainer } from "react-toastify";
 
 function Authentication() {

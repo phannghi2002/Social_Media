@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import ModalPassword from "./ModalPassword";
+import ModalPassword from "../ForgotPassword/ModalPassword";
 import { useDispatch } from "react-redux";
 import { sendEmailAction } from "../../Redux/ForgotPassword/forgotPasswordAction";
 import { useState } from "react";
