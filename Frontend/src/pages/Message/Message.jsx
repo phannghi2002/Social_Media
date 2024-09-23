@@ -73,6 +73,7 @@ const Message = () => {
     console.log("error websocket...", error);
   };
 
+  //noi nhan tin nhan
   useEffect(() => {
     if (stompClient && auth.user && currentChat) {
       const subscription = stompClient.subscribe(
@@ -81,6 +82,8 @@ const Message = () => {
       );
     }
   });
+
+  //noi gui tin nhan, newMessage chinh la data lay tu khi ta dispatch createMessage
   const sendMessageToServer = (newMessage) => {
     if (stompClient && newMessage) {
       stompClient.send(
@@ -104,8 +107,19 @@ const Message = () => {
   //tao tin nhan tu troi len man hinh
   useEffect(() => {
     if (chatContainerRef.current) {
+      console.log(
+        "hehes",
+        chatContainerRef.current.scrollTop,
+        chatContainerRef.current.scrollHeight
+      );
       chatContainerRef.current.scrollTop =
         chatContainerRef.current.scrollHeight;
+
+      console.log(
+        "sau khi thay doi ne",
+        chatContainerRef.current.scrollTop,
+        chatContainerRef.current.scrollHeight
+      );
     }
   }, [messages]);
   return (

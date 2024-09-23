@@ -85,7 +85,7 @@ export const likePostAction = (postId) => async (dispatch) => {
 //CREATE COMMENT
 
 export const createCommentAction = (reqData) => async (dispatch) => {
-  console.log("dang lam create comment", reqData.content);
+  console.log("dang lam create comment", reqData);
   dispatch({ type: CREATE_COMMENT_REQUEST });
   try {
     const { data } = await api.post(

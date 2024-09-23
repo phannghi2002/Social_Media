@@ -6,6 +6,6 @@ public class CreateOTP {
     public Integer generateOTP() {
         Random random = new Random();
         return random.nextInt(900000) + 100000; // Generates a random number between 100000 and 999999
-
+// random.nextInt random between 0 - 899999
     }
 }

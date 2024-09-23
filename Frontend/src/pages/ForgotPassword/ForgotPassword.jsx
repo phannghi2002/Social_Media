@@ -9,7 +9,6 @@ export default function ForgotPassword() {
   const [email, setEmail] = useState("");
 
   const dispatch = useDispatch();
-  // const forgotPassword = useSelector((store) => store.forgotPassword);
   const [error, setError] = useState("");
 
   const handleClickSendEmail = async () => {

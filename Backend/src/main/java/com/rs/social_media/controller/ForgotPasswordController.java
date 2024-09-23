@@ -85,6 +85,10 @@ public class ForgotPasswordController {
     @PostMapping("/changePassword/{email}")
     public ResponseEntity<String> changePasswordHandler(@RequestBody ChangePassword changePassword,
                                                         @PathVariable String email) {
+        // co the dung cai nay de thay the cau lenh so sanh 2 gia tri cua objects duoi day:
+        //!changePassword.password().equals(changePassword.repeatPassword())
+        //Chu y: so sanh gia tri nguyen thuy thi dung toan tu == con so sanh gia tri khong nguyen thuy
+        //thi dung equals
         if (!Objects.equals(changePassword.password(), changePassword.repeatPassword())) {
             return new ResponseEntity<>("Please enter password again!", HttpStatus.EXPECTATION_FAILED);
         }

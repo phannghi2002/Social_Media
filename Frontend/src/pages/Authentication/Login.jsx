@@ -40,6 +40,8 @@ function Login() {
       setError(error.response.data.message || "Login failed"); // Set the error message
     } else {
       setError(""); // Clear the error if the login is successful
+
+      navigate("/");
       window.location.reload();
     }
   };

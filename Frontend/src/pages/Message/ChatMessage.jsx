@@ -2,7 +2,8 @@ import { useSelector } from "react-redux";
 
 /* eslint-disable no-constant-condition */
 function ChatMessage({ item }) {
-  const { message, auth } = useSelector((store) => store);
+  const { auth } = useSelector((store) => store);
+  //chu tai khoan nhan ben trai, nguoi ban nhan ben phai
   const isReqUserMessage = auth?.user?.id === item?.user?.id;
   return (
     <div

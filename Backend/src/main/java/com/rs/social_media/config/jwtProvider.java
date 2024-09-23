@@ -1,15 +1,11 @@
 package com.rs.social_media.config;
 
-import com.rs.social_media.request.LoginRequest;
-import io.jsonwebtoken.Claims;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwsHeader;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
-
 import org.springframework.security.core.Authentication;
-
-
 import javax.crypto.SecretKey;
 import java.util.Date;
 
@@ -39,6 +35,7 @@ public class jwtProvider {
             jwt = jwt.substring(7);
         }
 
+        // link check payload and header: https://jwt.io/
         Claims claims = Jwts.parser().setSigningKey(key).build().parseClaimsJws(jwt).getBody();
         JwsHeader claims2 = parser().setSigningKey(key).build().parseClaimsJws(jwt).getHeader();
 

@@ -20,9 +20,11 @@ public class ChatController {
 
     @PostMapping("/api/chats")
     public Chat createChat(@RequestHeader("Authorization") String jwt,@RequestBody CreateChatRequest req) throws Exception {
+        System.out.print("Deo chay that nhi 1");
         User reqUser = userService.findUserByJwt(jwt);
         User user2 = userService.findUserById(req.getUserId());
         Chat chat = chatService.createChat(reqUser, user2);
+        System.out.print("Deo chay that nhi 2");
         return chat;
     }
 

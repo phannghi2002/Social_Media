@@ -34,7 +34,7 @@ function MiddlePart() {
   }, [post.newComment, post.deletePostStatus, post.like]);
 
   var settings = {
-    dots: true,
+    // dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 5,

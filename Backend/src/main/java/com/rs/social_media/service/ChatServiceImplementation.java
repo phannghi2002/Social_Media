@@ -20,6 +20,12 @@ public class ChatServiceImplementation implements ChatService{
     public Chat createChat(User reqUser, User user2) {
         Chat isExist = chatRepository.findChatByUsersID(user2, reqUser);
 
+
+        if(isExist!=null){
+            System.out.print("cuoc hoi thoai nay da ton tai");
+            return isExist;
+        }
+
         Chat chat = new Chat();
         chat.getUsers().add(user2);
         chat.getUsers().add(reqUser);
@@ -27,10 +33,7 @@ public class ChatServiceImplementation implements ChatService{
 //        chat.setChat_image(chat.getChat_image());
         chat.setTimestamp(LocalDateTime.now());
 
-        if(isExist!=null){
-            System.out.print("cuoc hoi thoai nay da ton tai");
-            return isExist;
-        }
+
         return chatRepository.save(chat);
     }
 

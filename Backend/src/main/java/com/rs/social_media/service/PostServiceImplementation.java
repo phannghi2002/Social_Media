@@ -25,8 +25,6 @@ public class PostServiceImplementation implements PostService {
 
     @Override
     public Post createNewPost(Post post, Integer userId) throws Exception {
-
-
         User user = userService.findUserById(userId);
 
         Post newPost = new Post();
@@ -60,8 +58,9 @@ public class PostServiceImplementation implements PostService {
     @Override
     public Post findPostById(Integer postId) throws Exception{
 
-       Optional<Post> otp = postRepository.findById(postId);
-       if (otp.isEmpty()){
+        Optional<Post> otp = postRepository.findById(postId);
+
+        if (otp.isEmpty()){
            throw new Exception("Post not found with id " + postId);
        }
        //chu y: chi co Repository moi co phuong thuc get thoi va ko the dung phuong thuc get neu no tra ve mot danh sach(List) ma chi dung khi no tra ve 1 phan tu

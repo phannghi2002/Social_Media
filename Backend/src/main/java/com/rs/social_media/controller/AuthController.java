@@ -8,8 +8,6 @@ import com.rs.social_media.response.AuthResponse;
 import com.rs.social_media.service.CustomerUserDetailsService;
 import com.rs.social_media.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -74,8 +72,6 @@ public class AuthController {
         return res;
     }
 
-
-
     private Authentication authenticate(String email, String password) {
         UserDetails userDetails = customerUserDetails.loadUserByUsername(email);
         System.out.println("in userDetails " + userDetails);
@@ -87,7 +83,6 @@ public class AuthController {
         if (userDetails == null) {
             throw new BadCredentialsException("Invalid username");
         }
-
 
        // matches(CharSequence rawPassword, String encodedPassword)
        // Verify the encoded password obtained from storage matches the submitted raw password after it too is encoded. Ta co password la mat khau nguoi dung nhap

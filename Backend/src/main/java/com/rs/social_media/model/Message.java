@@ -12,8 +12,6 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

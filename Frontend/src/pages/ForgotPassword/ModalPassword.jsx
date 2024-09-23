@@ -216,6 +216,8 @@ function ModalPassword({ open, handleClose }) {
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
+    //padStart la phan them ky tu: str.padStart(targetLength [, padString]) voi targetLength la do dai cua ky tu sau khi them vao
+    // neu nhu be hon hoac bang thi khong co ky tu nao duoc them vao.
     return `${minutes.toString().padStart(2, "0")}:${remainingSeconds
       .toString()
       .padStart(2, "0")}`;

@@ -35,13 +35,15 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public User findUserById(Integer userId) throws UserExceptions {
-
+// chu y khi ta goi den findById la gia tri duy nhat thi cho du neu ta dinh nghia la User user hay Optional<User> user
+// thi bat buoc phai dung method get() de lay gia tri vi khi ta dinh nghia la User user thi no tu dong chuyen sang
+// dang Optional<User>
         Optional<User> user = userRepository.findById(userId);
         if (user.isPresent()) {
             return user.get();
         }
-        throw new UserExceptions("User not exist with userId " + userId);
 
+        throw new UserExceptions("User not exist with userId " + userId);
 
     }
 
